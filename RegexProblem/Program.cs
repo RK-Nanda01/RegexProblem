@@ -3,22 +3,22 @@ class Program
 {
     static void Main(string[] args)
     {
-        string num;
+        string pass;
         RegExpression rg = new RegExpression();
         Console.WriteLine("Welcome to Regular Expression Problems");
         // Check examples  //
         for(int i = 1; i<=8;i++)
         {
             Console.WriteLine("Enter your Phone Number");
-            num = Console.ReadLine();
+            pass = Console.ReadLine();
 
-            if (rg.ValidatePhoneNumber(num))
+            if (rg.ValidatePassword(pass))
             {
-                Console.WriteLine($"The Phone Number {num} is Valid");
+                Console.WriteLine($"The Password {pass} is Valid");
             }
             else
             {
-                Console.WriteLine($"The Phone Number {num} is InValid");
+                Console.WriteLine($"The Password {pass} is InValid");
             }
             
         }
