@@ -9,7 +9,7 @@ class Program
         // Check examples  //
         for(int i = 1; i<=8;i++)
         {
-            Console.WriteLine("Enter your Phone Number");
+            Console.WriteLine("Enter your Password");
             pass = Console.ReadLine();
 
             if (rg.ValidatePassword(pass))
