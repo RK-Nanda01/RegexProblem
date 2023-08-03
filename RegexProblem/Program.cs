@@ -3,22 +3,27 @@ class Program
 {
     static void Main(string[] args)
     {
-        string lname;
+        string email;
         RegExpression rg = new RegExpression();
         Console.WriteLine("Welcome to Regular Expression Problems");
-        Console.WriteLine("Enter your last name");
-        lname = Console.ReadLine();
-
-        if(rg.ValidateName(lname))
+        // Check all the examples given separately //
+        for(int i = 1; i<=8;i++)
         {
-            Console.WriteLine($"The last name {lname} is Valid");
-        }
-        else
-        {
-            Console.WriteLine($"The last name {lname} is InValid");
-        }
-        Console.ReadLine(); 
+            Console.WriteLine("Enter your Email");
+            email = Console.ReadLine();
 
+            if (rg.ValidateEmail(email))
+            {
+                Console.WriteLine($"The last name {email} is Valid");
+            }
+            else
+            {
+                Console.WriteLine($"The last name {email} is InValid");
+            }
+            
+        }
+
+        Console.ReadLine();
     }
 }
 
