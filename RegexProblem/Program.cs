@@ -6,7 +6,7 @@ class Program
         string num;
         RegExpression rg = new RegExpression();
         Console.WriteLine("Welcome to Regular Expression Problems");
-        // Check all the examples given separately //
+        // Check examples  //
         for(int i = 1; i<=8;i++)
         {
             Console.WriteLine("Enter your Phone Number");
