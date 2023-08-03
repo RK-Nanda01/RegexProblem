@@ -14,11 +14,11 @@ class Program
 
             if (rg.ValidatePhoneNumber(num))
             {
-                Console.WriteLine($"The last name {num} is Valid");
+                Console.WriteLine($"The Phone Number {num} is Valid");
             }
             else
             {
-                Console.WriteLine($"The last name {num} is InValid");
+                Console.WriteLine($"The Phone Number {num} is InValid");
             }
             
         }
