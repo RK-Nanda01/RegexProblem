@@ -9,7 +9,8 @@ namespace RegexProblem
         public static string REGEX_EMAIL = "^[a-zA-Z][a-zA-Z0-9]*[._+-]?[a-zA-Z0-9]+@[0-9a-z]+.[a-z]+[.]?[a-z]+$";
         public static string REGEX_PHONE_NUMBER = "^91 [1-9]{1}[0-9]{9}$";
         public static string REGEX_PASSWORD = "^(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&+=]).{8,}$";
-        
+        public static string REGEX_FIRSTNAME = "^[A-Z][a-zA-Z]{2,}$";
+        public static string REGEX_LASTNAME = "^[A-Z][a-zA-Z]{2,}$";
         public bool ValidateName(string name)
 		{
 			return Regex.IsMatch(name, REGEX_NAME);
@@ -26,6 +27,15 @@ namespace RegexProblem
         {
             return Regex.IsMatch(pass, REGEX_PASSWORD);
         }
+        public bool ValidateFirstName(string fname)
+        {
+            return Regex.IsMatch(fname, REGEX_FIRSTNAME);
+        }
+        public bool ValidateLastName(string name)
+        {
+            return Regex.IsMatch(name, REGEX_LASTNAME);
+        }
+
     }
 }
 
