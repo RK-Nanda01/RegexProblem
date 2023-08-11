@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Text.RegularExpressions;
+using System.Xml.Linq;
+
 namespace RegexProblem
 {
 	public class RegExpression
@@ -13,27 +15,70 @@ namespace RegexProblem
         public static string REGEX_LASTNAME = "^[A-Z][a-zA-Z]{2,}$";
         public bool ValidateName(string name)
 		{
-			return Regex.IsMatch(name, REGEX_NAME);
-		}
+            if (Regex.IsMatch(name, REGEX_NAME))
+            {
+                return true;
+            }
+            else
+            {
+                throw new UserRegistrationException(UserRegistrationException.RegistrationError.INVALID_NAME, "First name or Last Name is Invalid");
+            }
+        }
         public bool ValidateEmail(string email)
         {
-            return Regex.IsMatch(email, REGEX_EMAIL);
+            if (Regex.IsMatch(email, REGEX_EMAIL))
+            {
+                return true;
+            }
+            else
+            {
+                throw new UserRegistrationException(UserRegistrationException.RegistrationError.INVALID_EMAIL, "Email is invalid");
+            }
         }
         public bool ValidatePhoneNumber(string num)
         {
-            return Regex.IsMatch(num, REGEX_PHONE_NUMBER);
+            if (Regex.IsMatch(num, REGEX_PHONE_NUMBER))
+            {
+                return true;
+            }
+            else
+            {
+                throw new UserRegistrationException(UserRegistrationException.RegistrationError.INVALID_PHONE_NUMBER, "Phone number should of 10 digits and should have country code");
+            }
         }
         public bool ValidatePassword(string pass)
         {
-            return Regex.IsMatch(pass, REGEX_PASSWORD);
+            if (Regex.IsMatch(pass, REGEX_PASSWORD))
+            {
+                return true;
+            }
+            else
+            {
+                throw new UserRegistrationException(UserRegistrationException.RegistrationError.INVALID_PASSWORD, "Password should be Min 8 chars and should contain atleast One capital, one special char and one numeric");
+            }
         }
         public bool ValidateFirstName(string fname)
         {
-            return Regex.IsMatch(fname, REGEX_FIRSTNAME);
+            if(Regex.IsMatch(fname, REGEX_FIRSTNAME))
+            {
+                return true;
+            }
+            else
+            {
+                throw new UserRegistrationException(UserRegistrationException.RegistrationError.INVALID_FNAME, "First Name should be min 3 chars and should start with Capital");
+            }
+            
         }
         public bool ValidateLastName(string name)
         {
-            return Regex.IsMatch(name, REGEX_LASTNAME);
+            if (Regex.IsMatch(name, REGEX_LASTNAME))
+            {
+                return true;
+            }
+            else
+            {
+                throw new UserRegistrationException(UserRegistrationException.RegistrationError.INVALID_LNAME, "Last Name should be min 3 chars and should start with Capital");
+            }
         }
 
     }

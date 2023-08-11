@@ -7,87 +7,87 @@ using RegexProblem;
 public class UnitTest1
 {
     [TestMethod]
-    [DataRow("Uma", true)]
-    [DataRow("Ashok", true)]
-    [DataRow("Ad", false)]
-    [DataRow("aditya", false)]
-    public void On_Correct_FirstNameAndLastName_ShouldGiveTrue(string fname, bool expected)
+    [DataRow("abcd")]
+    [DataRow("ab")]
+    public void On_InCorrect_FirstName_ShouldGive_INVALID_FNAME(string input)
     {
         //Arrange
+        string expected = "First Name should be min 3 chars and should start with Capital";
         RegExpression user = new RegExpression();
+        try
+        {
+            bool res = user.ValidateFirstName(input);
+            Assert.AreEqual(res, expected);
+        }
 
-        //Act
-        bool resFirstName = user.ValidateFirstName(fname);
-        bool resLastName = user.ValidateFirstName(fname);
-
-        //Assert
-        Assert.AreEqual(resFirstName, expected);
-        Assert.AreEqual(resLastName, expected);
+        catch(UserRegistrationException e)
+        {
+            Assert.AreEqual(e.Message, expected);
+        }
 
     }
 
     [TestMethod]
-    [DataRow("abc@yahoo.com", true)]
-    [DataRow("abc.100@abc.com.au", true)]
-    [DataRow("abc@%*.com", false)]
-    public void On_Correct_Email_Format_Should_ReturnTrue(string email, bool expected)
+    [DataRow("abc")]
+    [DataRow("ab")]
+    public void On_InCorrect_LastName_ShouldGive_INVALID_LNAME(string input)
     {
 
-        //Arrange
+        string expected = "Last Name should be min 3 chars and should start with Capital";
         RegExpression user = new RegExpression();
+        try
+        {
+            bool res = user.ValidateLastName(input);
+            Assert.AreEqual(res, expected);
+        }
 
-        //Act
-        bool res = user.ValidateEmail(email);
-        
-
-        //Assert
-        Assert.AreEqual(res, expected);
-        
+        catch (UserRegistrationException e)
+        {
+            Assert.AreEqual(e.Message, expected);
+        }
 
     }
 
     [TestMethod]
-    [DataRow("91 1234132467", true)]
-    [DataRow("1234132467", false)]
-    [DataRow("1234132467", false)]
-    public void On_Correct_PhoneNumer_Format_Should_ReturnTrue(string num, bool expected)
+    [DataRow("1234132467")]
+    [DataRow("1234132467")]
+    public void On_InCorrect_PhoneNumber_ShouldGive_INVALID_PHONE_NUMBER(string input)
     {
-
-        //Arrange
+        string expected = "Phone number should of 10 digits and should have country code";
         RegExpression user = new RegExpression();
+        try
+        {
+            bool res = user.ValidatePhoneNumber(input);
+            Assert.AreEqual(res, expected);
+        }
 
-        //Act
-        bool res = user.ValidatePhoneNumber(num);
-
-
-        //Assert
-        Assert.AreEqual(res, expected);
-
+        catch (UserRegistrationException e)
+        {
+            Assert.AreEqual(e.Message, expected);
+        }
 
     }
     [TestMethod]
-    [DataRow("abc", false)]
-    [DataRow("abcdefhg", false)]
-    [DataRow("abcdefh2G", false)]
-    [DataRow("abcd@efh2G", true)]
-    public void On_Correct_Password_Format_Should_ReturnTrue(string password, bool expected)
+    [DataRow("abc")]
+    [DataRow("abcdefhg")]
+    [DataRow("abcdefh2G")]
+    public void On_InCorrect_Password_Format_ShouldGive_INVALID_PASSWORD(string input)
     {
 
-        //Arrange
+        string expected = "Password should be Min 8 chars and should contain atleast One capital, one special char and one numeric";
         RegExpression user = new RegExpression();
+        try
+        {
+            bool res = user.ValidatePassword(input);
+            Assert.AreEqual(res, expected);
+        }
 
-        //Act
-        bool res = user.ValidatePassword(password);
-
-
-        //Assert
-        Assert.AreEqual(res, expected);
+        catch (UserRegistrationException e)
+        {
+            Assert.AreEqual(e.Message, expected);
+        }
 
 
     }
-
-
-
-
 
 }

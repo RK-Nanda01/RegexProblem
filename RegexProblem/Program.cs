@@ -7,7 +7,7 @@ class Program
         RegExpression rg = new RegExpression();
         Console.WriteLine("Welcome to Regular Expression Problems");
         // Check examples  //
-        for(int i = 1; i<=8;i++)
+        for (int i = 1; i <= 8; i++)
         {
             Console.WriteLine("Enter your Password");
             pass = Console.ReadLine();
@@ -20,7 +20,7 @@ class Program
             {
                 Console.WriteLine($"The Password {pass} is InValid");
             }
-            
+
         }
 
         Console.ReadLine();
