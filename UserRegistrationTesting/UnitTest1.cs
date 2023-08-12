@@ -89,5 +89,25 @@ public class UnitTest1
 
 
     }
+    [TestMethod]
+    [DataRow("abc123@.com.com")]
+    public void On_InCorrect_Email_Format_ShouldGive_INVALID_EMAIL(string input)
+    {
+
+        string expected = "Email is invalid";
+        RegExpression user = new RegExpression();
+        try
+        {
+            bool res = user.ValidateEmail(input);
+            Assert.AreEqual(res, expected);
+        }
+
+        catch (UserRegistrationException e)
+        {
+            Assert.AreEqual(e.Message, expected);
+        }
+
+
+    }
 
 }

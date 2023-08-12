@@ -13,9 +13,10 @@ namespace RegexProblem
         public static string REGEX_PASSWORD = "^(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&+=]).{8,}$";
         public static string REGEX_FIRSTNAME = "^[A-Z][a-zA-Z]{2,}$";
         public static string REGEX_LASTNAME = "^[A-Z][a-zA-Z]{2,}$";
-        public bool ValidateName(string name)
-		{
-            if (Regex.IsMatch(name, REGEX_NAME))
+
+       public Func<string, bool> ValidateName = (name) =>
+        {
+            if(Regex.IsMatch(name, REGEX_NAME))
             {
                 return true;
             }
@@ -23,10 +24,12 @@ namespace RegexProblem
             {
                 throw new UserRegistrationException(UserRegistrationException.RegistrationError.INVALID_NAME, "First name or Last Name is Invalid");
             }
-        }
-        public bool ValidateEmail(string email)
+
+        };
+        public Func<string, bool> ValidateEmail = (email) =>
         {
-            if (Regex.IsMatch(email, REGEX_EMAIL))
+
+            if(Regex.IsMatch(email, REGEX_EMAIL))
             {
                 return true;
             }
@@ -34,8 +37,8 @@ namespace RegexProblem
             {
                 throw new UserRegistrationException(UserRegistrationException.RegistrationError.INVALID_EMAIL, "Email is invalid");
             }
-        }
-        public bool ValidatePhoneNumber(string num)
+        };
+        public Func<string, bool> ValidatePhoneNumber = (num) =>
         {
             if (Regex.IsMatch(num, REGEX_PHONE_NUMBER))
             {
@@ -45,8 +48,10 @@ namespace RegexProblem
             {
                 throw new UserRegistrationException(UserRegistrationException.RegistrationError.INVALID_PHONE_NUMBER, "Phone number should of 10 digits and should have country code");
             }
-        }
-        public bool ValidatePassword(string pass)
+
+        };
+       
+        public Func<string, bool> ValidatePassword = (pass) =>
         {
             if (Regex.IsMatch(pass, REGEX_PASSWORD))
             {
@@ -56,10 +61,11 @@ namespace RegexProblem
             {
                 throw new UserRegistrationException(UserRegistrationException.RegistrationError.INVALID_PASSWORD, "Password should be Min 8 chars and should contain atleast One capital, one special char and one numeric");
             }
-        }
-        public bool ValidateFirstName(string fname)
+        };
+
+        public Func<string, bool> ValidateFirstName = (fname) =>
         {
-            if(Regex.IsMatch(fname, REGEX_FIRSTNAME))
+            if (Regex.IsMatch(fname, REGEX_FIRSTNAME))
             {
                 return true;
             }
@@ -67,11 +73,13 @@ namespace RegexProblem
             {
                 throw new UserRegistrationException(UserRegistrationException.RegistrationError.INVALID_FNAME, "First Name should be min 3 chars and should start with Capital");
             }
-            
-        }
-        public bool ValidateLastName(string name)
+
+        };
+
+
+        public Func<string, bool> ValidateLastName = (lname) =>
         {
-            if (Regex.IsMatch(name, REGEX_LASTNAME))
+            if (Regex.IsMatch(lname, REGEX_LASTNAME))
             {
                 return true;
             }
@@ -79,7 +87,9 @@ namespace RegexProblem
             {
                 throw new UserRegistrationException(UserRegistrationException.RegistrationError.INVALID_LNAME, "Last Name should be min 3 chars and should start with Capital");
             }
-        }
+
+        };
+
 
     }
 }

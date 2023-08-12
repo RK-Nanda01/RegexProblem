@@ -12,7 +12,7 @@ class Program
             Console.WriteLine("Enter your Password");
             pass = Console.ReadLine();
 
-            if (rg.ValidatePassword(pass))
+            if (rg.ValidateFirstName(pass))
             {
                 Console.WriteLine($"The Password {pass} is Valid");
             }
